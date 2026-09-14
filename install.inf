@@ -1,0 +1,11 @@
+[info]
+title=Print
+desc=Printing text/code/etc via the browser.
+type=cudatext-plugin
+subdir=cuda_print
+homepage=https://github.com/ildarkhasanshin/cuda_print/
+
+[item1]
+section=commands
+caption=Print\Open in browser
+method=run
