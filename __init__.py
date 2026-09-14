@@ -15,9 +15,10 @@ class Command:
 		text = ed.get_text_sel() if ed.get_text_sel() else ed.get_text_all()
 
 		suffix_txt = '.txt'
-		if ed.get_filename().endswith(suffix_txt):
+		edfn = ed.get_prop(PROP_FN)
+		if edfn.endswith(suffix_txt):
 			text_print = text
-			fn_ = os.path.basename(ed.get_filename())
+			fn_ = os.path.basename(edfn)
 		else:
 			text_ = ''
 			i = 0
@@ -25,7 +26,7 @@ class Command:
 				i = i + 1
 				text_ += '[' + str(i) + ']' + "\t" + line + "\n"
 			text_print = text_
-			fn_ = os.path.basename(ed.get_filename() + suffix_txt)
+			fn_ = os.path.basename(edfn + suffix_txt)
 
 		fn = Path(tempfile.mkdtemp()) / fn_
 		if not fn:
