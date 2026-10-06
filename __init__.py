@@ -11,6 +11,15 @@ class Command:
 	def __init__(self):
 		return
 
+	def check_firefox(self):
+		import subprocess
+		try:
+		    output = subprocess.check_output(['firefox', '--version'])
+		except:
+		    output = False
+
+		return output
+
 	def run(self):
 		text = ed.get_text_sel() if ed.get_text_sel() else ed.get_text_all()
 
@@ -28,7 +37,14 @@ class Command:
 			text_print = text_
 			fn_ = os.path.basename(edfn + suffix_txt)
 
-		fn = Path(tempfile.mkdtemp()) / fn_
+		if self.check_firefox():
+			from pathlib import Path
+			fn = Path.home() / Path('cuda_print')
+			fn.mkdir(parents=True, exist_ok=True)
+			fn = fn / fn_
+		else:
+			fn = Path(tempfile.mkdtemp()) / fn_
+
 		if not fn:
 			msg_box(_('Cannot preview untitled tab'), MB_OK)
 			return

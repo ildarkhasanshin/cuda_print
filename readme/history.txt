@@ -1,4 +1,7 @@
 2026.10.06
+[*] fixes for opening in firefox
+
+2026.10.06
 [*] opening file by encoding 'utf-8'
 
 2026.09.14 (2)
