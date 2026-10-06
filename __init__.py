@@ -33,11 +33,11 @@ class Command:
 			msg_box(_('Cannot preview untitled tab'), MB_OK)
 			return
 
-		with open(fn, 'w') as f:
+		with open(fn, 'w', encoding='utf-8') as f:
 			f.write(text_print)
 
 		if not os.path.isfile(fn):
-			msg_status(_('Cannot open file: ')+fn)
+			msg_status(_('Cannot open file: ') + fn)
 			return
 
 		webbrowser.open_new_tab(str(fn))
